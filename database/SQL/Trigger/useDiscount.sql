@@ -5,25 +5,20 @@ CREATE OR REPLACE FUNCTION useDiscount()
 	DECLARE x INT;
     BEGIN
 		IF NEW.id_diskon IS NULL THEN
-			UPDATE transaksi
-			SET id_Diskon = (SELECT id_Diskon 
-										FROM diskon
-										WHERE diskon.created_at <= now()
-										AND diskon.masa_berlaku >= now())            
-			WHERE id_transaksi = NEW.id_transaksi;
+			NEW.id_diskon = (SELECT id_Diskon 
+							 FROM diskon
+							 WHERE diskon.created_at <= now()
+ 							 AND diskon.masa_berlaku >= now());
 			X:=1;
 		END IF;
 		
 		IF X=1 THEN 
-			UPDATE transaksi
-			SET jumlah_biaya = jumlah_biaya - jumlah_biaya * (select potongan
+		NEW.jumlah_biaya = new.jumlah_biaya - new.jumlah_biaya * (select potongan
 															  from diskon
-															  where diskon.id_diskon = id_diskon)
-			WHERE id_transaksi = NEW.id_transaksi;
+															  where diskon.id_diskon = id_diskon);
 		END IF;
-		
 		RETURN NEW;	
     END;
 $useDiscount$ LANGUAGE plpgsql;
 
-CREATE TRIGGER updTrigDiskon AFTER INSERT ON transaksi FOR EACH ROW EXECUTE PROCEDURE useDiscount();
+CREATE TRIGGER updTrigDiskon BEFORE INSERT ON transaksi FOR EACH ROW EXECUTE PROCEDURE useDiscount();
