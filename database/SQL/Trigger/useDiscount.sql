@@ -21,4 +21,4 @@ CREATE OR REPLACE FUNCTION useDiscount()
     END;
 $useDiscount$ LANGUAGE plpgsql;
 
-CREATE TRIGGER updTrigDiskon BEFORE INSERT ON transaksi FOR EACH ROW EXECUTE PROCEDURE useDiscount();
+CREATE TRIGGER updTrigUseDiskon BEFORE INSERT ON transaksi FOR EACH ROW EXECUTE PROCEDURE useDiscount();
