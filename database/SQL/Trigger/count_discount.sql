@@ -17,5 +17,5 @@ CREATE OR REPLACE FUNCTION count_discount() RETURNS trigger AS $count_discount$
 $count_discount$ LANGUAGE plpgsql;
 
 -- Trigger
-CREATE TRIGGER count_discount AFTER INSERT OR UPDATE ON testimoni
+CREATE TRIGGER count_discount AFTER INSERT OR UPDATE ON transaksi
 FOR EACH ROW EXECUTE FUNCTION count_discount();
