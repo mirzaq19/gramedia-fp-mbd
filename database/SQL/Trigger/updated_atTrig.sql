@@ -1,3 +1,4 @@
+-- Trigger untuk melakukan update timestamp saat ada perubahan data di row
 CREATE OR REPLACE FUNCTION updatedTrigger()
 RETURNS TRIGGER as $updatedTrigger$
     BEGIN
