@@ -1,6 +1,6 @@
--- Menampilkan nama, kategori, dan jenis produk
+-- Menampilkan nama, kategori, jenis produk, nama produk, dan jumlah produk
 
-SELECT akun.nama, kategori.kategori, jenis_produk.jenis, transaksi_detail.jumlah FROM akun
+SELECT akun.nama AS nama_akun, kategori.kategori AS kategori_produk, jenis_produk.jenis AS jenis_produk, produk.nama AS nama_produk, transaksi_detail.jumlah FROM akun
     INNER JOIN transaksi 
         ON transaksi.id_akun = akun.id_akun
     INNER JOIN transaksi_detail
