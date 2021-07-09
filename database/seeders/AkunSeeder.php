@@ -28,7 +28,7 @@ class AkunSeeder extends Seeder
                 'email'        => $faker->email(),
                 'password'     => $faker->text(15),
                 'nohp'         => $faker->phoneNumber(),
-                'alamat'       => $faker->streetAddress(),
+                'alamat'       => $faker->address(),
             ];
             echo 'Creating data: ' . $i . PHP_EOL;
         }
