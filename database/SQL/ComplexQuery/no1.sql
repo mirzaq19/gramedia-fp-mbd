@@ -11,3 +11,6 @@ SELECT akun.nama AS nama_akun, kategori.kategori AS kategori_produk, jenis_produ
         ON kategori.id_kategori = produk.id_kategori
     INNER JOIN jenis_produk
         ON jenis_produk.id_kategori = kategori.id_kategori;
+
+
+SELECT akun.nama AS nama_akun, kategori.kategori AS kategori_produk, jenis_produk.jenis AS jenis_produk FROM 
