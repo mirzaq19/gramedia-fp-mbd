@@ -21,10 +21,12 @@ class KategoriSeeder extends Seeder
         $faker = Faker::create();
 
         // Membuat data dan disimpan ke dalam array
-        for ($i = 1; $i <= 1000; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $kategoriData[] = [
                 'id_kategori'  => $i,
                 'kategori'     => $faker->text(10),
+                'created_at'   => $faker->dateTimeBetween('now','now'),
+                'updated_at'   => $faker->dateTimeBetween('now','now'),
             ];
             echo 'Creating data: ' . $i . PHP_EOL;
         }
